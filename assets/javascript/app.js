@@ -1,6 +1,6 @@
   
 
-	var topics= ["Rick and Morty", "Community", "Veep", "Seinfeld", "Arrested Development"];
+	var topics= ["Rick and Morty", "Community", "Veep", "Seinfeld", "Arrested Development", "Silicon Valley", "The O.C.", "Game of Thrones", "Alf", "The Simpsons"];
 
 	//displayImages();
 	displayButtons();
@@ -51,7 +51,7 @@
 
 					var imageHTML = $('<div>');
 					imageHTML.addClass("fl-l");
-					imageHTML.html(ratingContainer).append(imageContainer);
+					imageHTML.html(imageContainer).append(ratingContainer);
 					$("#images-div").append(imageHTML);
 				};
 			});
