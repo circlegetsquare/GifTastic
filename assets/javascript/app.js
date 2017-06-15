@@ -34,13 +34,25 @@
 			}).done(function(data){
 				$("#images-div").empty();
 				for (var i = 0; i < 10; i++) {
-					var imageURL = $('<img>');
-					imageURL.attr("src", data.data[i].images.fixed_height_still.url);
-					imageURL.attr("data-pause", data.data[i].images.fixed_height_still.url);
-					imageURL.attr("data-animate", data.data[i].images.fixed_height.url);
-					imageURL.attr("data-state", "pause");
-					imageURL.addClass("gif");
-					$("#images-div").append(imageURL);
+					var image = $('<img>');
+					image.attr("src", data.data[i].images.fixed_height_still.url);
+					image.attr("data-pause", data.data[i].images.fixed_height_still.url);
+					image.attr("data-animate", data.data[i].images.fixed_height.url);
+					image.attr("data-state", "pause");
+					image.addClass("gif");
+
+					var imageContainer = $('<div>');
+					imageContainer.html(image);
+
+					var imageRating = "Rating: " + data.data[i].rating;
+					var ratingContainer  = $('<div>');
+					ratingContainer.html(imageRating);
+					ratingContainer.addClass("ratings");
+
+					var imageHTML = $('<div>');
+					imageHTML.addClass("fl-l");
+					imageHTML.html(ratingContainer).append(imageContainer);
+					$("#images-div").append(imageHTML);
 				};
 			});
 
