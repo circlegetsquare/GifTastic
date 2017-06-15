@@ -9,6 +9,7 @@
 
 
 	function displayButtons() {
+		$("#buttons-div").empty();
 		for (var i = 0; i < topics.length; i++) {
 			var button = $('<button>');
 			button.addClass("topic-button");
@@ -63,13 +64,27 @@
 	};
 
 	function buttonClick() {
-		$("#buttons-div").on("click", "button.topic-button", function() {
+		$("#buttons-div").on("click", "button.topic-button", function(event) {
 			event.preventDefault();
 			var value = $(this).val();
 			console.log(value);
 			displayImages(value);
 		});
 	}
+
+      $("#add-topic").on("click", function(event) {
+        event.preventDefault();
+
+        // This line grabs the input from the textbox
+        var newTopic = $("#topic-input").val().trim();
+
+        // Adding the movie from the textbox to our array
+        topics.push(newTopic);
+        console.log(newTopic)
+
+        // Calling renderButtons which handles the processing of our movie array
+        displayButtons();
+      });
 	
 
 	 
