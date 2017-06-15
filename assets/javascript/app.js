@@ -2,24 +2,28 @@
 
 	var topics= ["Rick and Morty", "Community", "Veep", "Seinfeld", "Arrested Development"];
 
-	displayImages();
+	//displayImages();
 	displayButtons();
+	buttonClick();
 	imageClick();
 
 
 	function displayButtons() {
 		for (var i = 0; i < topics.length; i++) {
-			$("#buttons").append('<button>' + topics[i] + '</button>');
+			var button = $('<button>');
+			button.addClass("topic-button");
+			button.attr("id", topics[i]);
+			button.attr("value", i);
+			button.html(topics[i]);
+			$("#buttons-div").append(button);
 		};
 	};
 
-	function displayImages() {
-				
+	function displayImages(i) {
 		var url = "https://api.giphy.com/v1/gifs/search";
-
 		url += '?' +$.param({
 		'api_key': "dc6zaTOxFJmzC",
-		'q': topics[2],
+		'q': topics[i],
 		'limit': 10,
 		});
 
@@ -27,21 +31,22 @@
 				url: url,
 				method: "GET"
 			}).done(function(data){
+				$("#images-div").empty();
 				for (var i = 0; i < 10; i++) {
-					var imageURL = $('<img class="gif">');
+					var imageURL = $('<img>');
 					imageURL.attr("src", data.data[i].images.fixed_height_still.url);
 					imageURL.attr("data-pause", data.data[i].images.fixed_height_still.url);
 					imageURL.attr("data-animate", data.data[i].images.fixed_height.url);
 					imageURL.attr("data-state", "pause");
-					//imageURL.addClass("gif");
-					$("#images").append(imageURL);
+					imageURL.addClass("gif");
+					$("#images-div").append(imageURL);
 				};
 			});
 
 	};
 
 	function imageClick() {
-		$("#images").on("click", "img.gif", function() {
+		$("#images-div").on("click", "img.gif", function() {
 			
 			var state = $(this).attr("data-state");
 			console.log(state);
@@ -57,5 +62,14 @@
 		});
 	};
 
+	function buttonClick() {
+		$("#buttons-div").on("click", "button.topic-button", function() {
+			event.preventDefault();
+			var value = $(this).val();
+			console.log(value);
+			displayImages(value);
+		});
+	}
+	
 
 	 
