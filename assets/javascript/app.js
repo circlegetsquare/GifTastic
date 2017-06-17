@@ -50,7 +50,7 @@
 					ratingContainer.addClass("ratings");
 
 					var imageHTML = $('<div>');
-					imageHTML.addClass("fl-l");
+					imageHTML.addClass("fl-l border");
 					imageHTML.html(imageContainer).append(ratingContainer);
 					$("#images-div").append(imageHTML);
 				};
