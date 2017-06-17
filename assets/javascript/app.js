@@ -1,6 +1,6 @@
   
 
-	var topics= ["Rick and Morty", "Community", "Veep", "Seinfeld", "Arrested Development", "Silicon Valley", "The O.C.", "Game of Thrones", "Alf", "The Simpsons"];
+	var topics= ["Rick and Morty", "Community", "Veep", "Seinfeld", "Arrested Development", "Silicon Valley", "Game of Thrones", "Alf", "The Simpsons"];
 
 	//displayImages();
 	displayButtons();
